@@ -3,22 +3,22 @@
 class Solution {
 
     /**
-     * @param Integer[] $nums
-     * @param Integer $target
+     * @param Integer[] $digits
      * @return Integer[]
      */
-    function twoSum($nums, $target) {
-        $arr = [];
+    function plusOne($digits) {
+        $len = count($digits);
 
-        foreach ($nums as $key => $val) {
-            $temp = $target - $val;
-            if (isset($arr[$temp])) {
-                return [$arr[$temp], $key];
+        for ($i = $len - 1; $i >= 0; $i--) {
+            $temp = $digits[$i] + 1;
+            $digits[$i] = $temp % 10;
+
+            if ($temp % 10 != 0) {
+                return $digits;
             }
-
-            $arr[$val] = $key;
         }
+        array_unshift($digits, 1);
 
-        return ;
+        return $digits;
     }
 }
